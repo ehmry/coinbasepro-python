@@ -678,6 +678,14 @@ class AuthenticatedClient(PublicClient):
 
         return self._send_paginated_message('/fills', params=params)
 
+    def get_limits(self, product_id=None, order_id=None, **kwargs):
+        """ Get Current Exchange Limits.
+
+        This method will return information on your payment method
+        transfer limits, as well as buy/sell limits per currency.
+        """
+        return self._send_message('get', '/users/self/exchange-limits')
+
     def get_fundings(self, status=None, **kwargs):
         """ Every order placed with a margin profile that draws funding
         will create a funding record.
